@@ -8,6 +8,7 @@ async function fetchIntialData() {
 }
 
 ready = fetchIntialData();
+initialize();
 
 async function initialize() {
 	await ready;
@@ -35,6 +36,6 @@ async function gatherPlaytimeData(week) {
 		let playtimeToAdd = weekPlaytimeData[i].exitTime - weekPlaytimeData[i].joinTime;
 		playerTimesOrganized[name] = (playerTimesOrganized[name] || 0) + playtimeToAdd;
 	}
-	
+
 	return(playerTimesOrganized)
 }
