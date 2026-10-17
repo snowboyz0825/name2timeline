@@ -52,7 +52,7 @@ async function test() {
 	const data = await res.json();
 	console.log(data)
 	let week = data[data.length-1];
-	week = 1234
+	week = "2026_W1234.jsonl"
 	console.log(week)
 	let weekNum = week.slice(week.indexOf("W") + 1);
 	console.log(weekNum.slice(0, -6));
