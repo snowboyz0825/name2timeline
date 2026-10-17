@@ -32,6 +32,7 @@ async function gatherPlaytimeData(week) {
 		let playtimeToAdd = weekPlaytimeData[i].exitTime - weekPlaytimeData[i].joinTime;
 		playerTimesOrganized[name] = (playerTimesOrganized[name] || 0) + playtimeToAdd;
 	}
+	return(playerTimesOrganized)
 
 
 	/* for (let i = 0; i < weekPlaytimeData.length; i++) {
