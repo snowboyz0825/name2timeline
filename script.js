@@ -32,5 +32,5 @@ async function gatherPlaytimeData(week) {
 			weekPlaytimeDataOrganized.push(weekPlaytimeData[i].playerName);
 		}
 	}
-	return(weekPlaytimeData);
+	return(weekPlaytimeDataOrganized);
 }
