@@ -47,12 +47,11 @@ Use the Thursday-shift version, which handles all three points: */
 */
 
 async function test() {
-	const res = await fetch("https://name2.party/api/joindb/filelist.json", { cache: "no-cache" });
+	let res = await fetch("https://name2.party/api/joindb/filelist.json", { cache: "no-cache" });
 	console.log(res)
-	const data = await res.json();
+	let data = await res.json();
 	console.log(data)
 	let week = data[data.length-1];
-	week = "2026_W1234.jsonl"
 	console.log(week)
 	let weekNum = week.slice(week.indexOf("W") + 1);
 	console.log(weekNum.slice(0, -6));
