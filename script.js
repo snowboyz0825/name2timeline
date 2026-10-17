@@ -6,6 +6,12 @@ async function fetchIntialData() {
 
 fetchIntialData();
 
+async function initialize() {
+	const weekNum = fetchWeekNumber();
+	const weekPlaytimeDataOrganized = gatherPlaytimeData(weekNum);
+	return(weekPlaytimeDataOrganized);
+}
+
 async function fetchWeekNumber() {
 	let data = await res.json();
 	let week = data[data.length-1];
@@ -25,7 +31,7 @@ async function gatherPlaytimeData(week) {
 			return
 		} else {
 			weekPlaytimeDataOrganized.push(playerName);
-			console.log(weekPlaytimeDataOrganized)
+			return(weekPlaytimeDataOrganized)
 		}
 	}
 }
