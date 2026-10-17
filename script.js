@@ -28,8 +28,16 @@ async function gatherPlaytimeData(week) {
 
 	let weekPlaytimeDataOrganized = []
 	for (let i = 0; i < weekPlaytimeData.length; i++) {
+			let name = weekPlaytimeData[i].playerName
+			let playtimeToAdd = weekPlaytimeData[i].joinTime - weekPlaytimeData[i].exitTime;
 		if (!weekPlaytimeDataOrganized.includes(weekPlaytimeData[i].playerName)) {
-			weekPlaytimeDataOrganized.push(weekPlaytimeData[i].playerName);
+			weekPlaytimeDataOrganized.push({
+				username: name,
+				playtimeSeconds: playtimeToAdd
+			});
+		} else
+			{
+				weekPlaytimeDataOrganized[i].playtimeSeconds += playtimeToAdd
 		}
 	}
 	return(weekPlaytimeDataOrganized);
