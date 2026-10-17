@@ -4,9 +4,10 @@ async function fetchIntialData() {
 	res = await fetch("https://name2.party/api/joindb/filelist.json", { cache: "no-cache" });
 }
 
-fetchIntialData();
+ready = fetchIntialData();
 
 async function initialize() {
+	await ready;
 	const weekNum = await fetchWeekNumber();
 	const weekPlaytimeDataOrganized = await gatherPlaytimeData(weekNum);
 	return(weekPlaytimeDataOrganized);
@@ -26,7 +27,7 @@ async function gatherPlaytimeData(week) {
 	const weekPlaytimeData = dataStringed.split('\n').filter(line => line.trim() !== '').map(line => JSON.parse(line));
 
 	let weekPlaytimeDataOrganized = []
-	for (let i = 0; i < weekPlaytimeData; i++) {
+	for (let i = 0; i < weekPlaytimeData.length; i++) {
 		if (weekPlaytimeDataOrganized.includes(weekPlaytimeData[i].playerName)) {
 			return
 		} else {
