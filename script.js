@@ -54,5 +54,5 @@ async function test() {
 	const week = data[data.length-1];
 	console.log(week)
 	let weekNum = week.slice(week.indexOf("W") + 1);
-	console.log(weekNum.slice(0, -5));
+	console.log(weekNum.slice(0, -6));
 }
