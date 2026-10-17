@@ -47,12 +47,12 @@ Use the Thursday-shift version, which handles all three points: */
 */
 
 async function test() {
-  const res = await fetch("https://name2.party/api/joindb/filelist.json", { cache: "no-cache" });
-  console.log(res)
-  const data = await res.json();
-  console.log(data)
-  const week = data[data.length-1];
-  console.log(week)
-  let weekNum = week.slice(week.indexOf("W") + 1);
-  console.log(weekNum);
+	const res = await fetch("https://name2.party/api/joindb/filelist.json", { cache: "no-cache" });
+	console.log(res)
+	const data = await res.json();
+	console.log(data)
+	const week = data[data.length-1];
+	console.log(week)
+	let weekNum = week.slice(week.indexOf("W") + 1);
+	console.log(weekNum.slice(0, -5));
 }
