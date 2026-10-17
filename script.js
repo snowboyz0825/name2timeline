@@ -9,7 +9,7 @@ ready = fetchIntialData();
 async function initialize() {
 	await ready;
 	const weekNum = await fetchWeekNumber();
-	const weekPlaytimeDataOrganized = await gatherPlaytimeData(32);
+	const weekPlaytimeDataOrganized = await gatherPlaytimeData("42");
 	return(weekPlaytimeDataOrganized);
 }
 
