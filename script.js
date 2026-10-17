@@ -11,4 +11,13 @@ async function gatherPlaytimeData(week) {
 	const response = await fetch(`./data/timelogs/server_${currentYear}-W${week}.jsonl`);
 	const dataStringed = await response.text();
 	const weekPlaytimeData = dataStringed.split('\n').filter(line => line.trim() !== '').map(line => JSON.parse(line));
+
+	let weekPlaytimeDataOrganized = []
+	for (let i = 0; i < weekPlaytimeData; i++) {
+		if (weekPlaytimeDataOrganized.includes(weekPlaytimeData[i].playerName)) {
+			return
+		} else {
+			weekPlaytimeDataOrganized.push(playerName)
+		}
+	}
 }
