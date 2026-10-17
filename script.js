@@ -7,8 +7,8 @@ async function fetchIntialData() {
 fetchIntialData();
 
 async function initialize() {
-	const weekNum = fetchWeekNumber();
-	const weekPlaytimeDataOrganized = gatherPlaytimeData(weekNum);
+	const weekNum = await fetchWeekNumber();
+	const weekPlaytimeDataOrganized = await gatherPlaytimeData(weekNum);
 	return(weekPlaytimeDataOrganized);
 }
 
