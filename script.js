@@ -10,7 +10,7 @@ async function initialize() {
 	await ready;
 	// const weekNum = await fetchWeekNumber();
 	const weekPlaytimeDataOrganized = await gatherPlaytimeData("32");
-	return(weekPlaytimeDataOrganized);
+	console.log(weekPlaytimeDataOrganized);
 }
 
 async function fetchWeekNumber() {
