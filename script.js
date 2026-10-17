@@ -49,4 +49,6 @@ Use the Thursday-shift version, which handles all three points: */
 async function test() {
   const res = await fetch("https://name2.party/api/joindb/filelist.json", { cache: "no-cache" });
   console.log(res)
+  const data = await res.json
+  console.log(data)
 }
