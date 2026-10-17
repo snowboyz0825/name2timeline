@@ -29,7 +29,7 @@ async function gatherPlaytimeData(week) {
 	let weekPlaytimeDataOrganized = []
 	for (let i = 0; i < weekPlaytimeData.length; i++) {
 		if (!weekPlaytimeDataOrganized.includes(weekPlaytimeData[i].playerName)) {
-			weekPlaytimeDataOrganized.push(playerName);
+			weekPlaytimeDataOrganized.push(weekPlaytimeData[i].playerName);
 			return(weekPlaytimeDataOrganized)
 		}
 	}
