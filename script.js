@@ -26,11 +26,18 @@ async function gatherPlaytimeData(week) {
 	const dataStringed = await response.text();
 	const weekPlaytimeData = dataStringed.split('\n').filter(line => line.trim() !== '').map(line => JSON.parse(line));
 
-	let weekPlaytimeDataOrganized = []
+	let playerTimesOrganized = {}
 	for (let i = 0; i < weekPlaytimeData.length; i++) {
+		let name = weekPlaytimeData[i].playerName
+		let playtimeToAdd = weekPlaytimeData[i].exitTime - weekPlaytimeData[i].joinTime;
+		playerTimesOrganized[name] = (playerTimesOrganized[name] || 0) + playtimeToAdd;
+	}
+
+
+	/* for (let i = 0; i < weekPlaytimeData.length; i++) {
 			let name = weekPlaytimeData[i].playerName
-			let playtimeToAdd = weekPlaytimeData[i].joinTime - weekPlaytimeData[i].exitTime;
-		if (!weekPlaytimeDataOrganized.includes(weekPlaytimeData[i].playerName)) {
+			let playtimeToAdd = weekPlaytimeData[i].exitTime - weekPlaytimeData[i].joinTime;
+		if (!weekPlaytimeDataOrganized[i].username == name) {
 			weekPlaytimeDataOrganized.push({
 				username: name,
 				playtimeSeconds: playtimeToAdd
@@ -40,5 +47,5 @@ async function gatherPlaytimeData(week) {
 				weekPlaytimeDataOrganized[i].playtimeSeconds += playtimeToAdd
 		}
 	}
-	return(weekPlaytimeDataOrganized);
+	return(weekPlaytimeDataOrganized); */
 }
