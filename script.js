@@ -51,4 +51,6 @@ async function test() {
   console.log(res)
   const data = await res.json();
   console.log(data)
+  const week = data[-1];
+  console.log(week)
 }
