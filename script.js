@@ -1,4 +1,4 @@
-timelineGrid = document.getElementById('timeline-grid')
+/* timelineGrid = document.getElementById('timeline-grid')
 
 
 const timelineData = require('./data/timelogs/'); 
@@ -17,7 +17,7 @@ console.log("Year:", year);
 console.log("Week:", week);
 
 
-
+ */
 
 /* Testing specific dates where the two week-numbering systems disagree.
 No, it won’t match. It’s the common “week of year” formula, but it counts weeks a different way than Python’s isocalendar():
@@ -45,3 +45,8 @@ Use the Thursday-shift version, which handles all three points: */
 }
 
 */
+
+async function test() {
+  const res = await fetch("https://name2.party/api/joindb/filelist.json", { cache: "no-cache" });
+  console.log(res)
+}
