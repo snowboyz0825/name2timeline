@@ -5,3 +5,10 @@ async function fetchWeekNumber() {
 	let weekNum = week.slice(week.indexOf("W") + 1);
 	return(weekNum.slice(0, -6));
 }
+
+async function gatherPlaytimeData(week) {
+	const currentYear = new Date().getFullYear();
+	const response = await fetch(`./data/timelogs/server_${currentYear}-W${week}.jsonl`);
+	const dataStringed = await response.text();
+	const weekPlaytimeData = dataStringed.split('\n').filter(line => line.trim() !== '').map(line => JSON.parse(line));
+}
