@@ -1,10 +1,10 @@
-let res
+let filelist
 let totalPlaytime
 let week
 
 
 async function fetchIntialData() {
-	res = await fetch("https://name2.party/api/joindb/filelist.json", { cache: "no-cache" });
+	filelist = await fetch("https://name2.party/api/joindb/filelist.json", { cache: "no-cache" });
 }
 
 ready = fetchIntialData();
@@ -18,7 +18,7 @@ async function initialize() {
 }
 
 async function fetchWeekNumber() {
-	let data = await res.json();
+	let data = await filelist.json();
 	let week = data[data.length-1];
 	let weekNum = week.slice(week.indexOf("W") + 1);
 	return(weekNum.slice(0, -6));
