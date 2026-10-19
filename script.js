@@ -13,7 +13,7 @@ initialize();
 async function initialize() {
 	await ready;
 	week = await fetchWeekNumber();
-	totalPlaytime = await gatherPlaytimeData;
+	totalPlaytime = await gatherPlaytimeData();
 	const weekPlaytimeDataOrganized = await gatherPlaytimeData(week);
 }
 
