@@ -1,13 +1,14 @@
 let filelist;
 let totalPlaytime;
 let week;
+let playerTimeframes = {};
 
 async function initialize() {
 	const response = await fetch("https://name2.party/api/joindb/filelist.json", { cache: "no-cache" });
 	if (!response.ok) throw new Error(`Failed to fetch filelist: ${response.status}`);
 	filelist = await response.json();
 	week = getLatestWeek(filelist);
-	totalPlaytime = await gatherPlaytimeData(week);
+	await gatherPlaytimeData(week);
 }
 
 const ready = initialize();
@@ -23,16 +24,19 @@ async function gatherPlaytimeData(week) {
 	if (!response.ok) throw new Error(`Failed to fetch timelog for ${week}: ${response.status}`);
 	const text = await response.text();
 	const entries = text.split("\n").filter(line => line.trim() !== "").map(line => JSON.parse(line));
-	const playerTimes = {};
-	const playerTimeframes = {};
+	totalPlaytime = {};
+	playerTimeframes = {};
 	for (const player of entries) {
 		const playtime = player.exitTime - player.joinTime;
 		playerTimes[player.playerName] = (playerTimes[player.playerName] || 0) + playtime;
 
-		const timeframeJoinPercent = player.jointime/86400;
-		const timeframeLeavePercent = player.exitTime/86400;
-		playerTimeframes[player.playerName].joinPercent = timeframeJoinPercent;
-		playerTimeframes[player.playerName].leavePercent = timeframeLeavePercent;
+		if (!playerTimeframes[player.playerName]) {
+			playerTimeframes[player.playerName] = []
+		}
+		playerTimeframes[player.playerName].push({
+			joinPercent: player.joinTime / 86400,
+			leavePercent: player.exitTime / 86400
+		})
 	}
-	return playerTimes;
+	return { playerTimes, playerTimeframes };
 }
