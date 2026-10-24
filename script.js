@@ -1,7 +1,7 @@
 let filelist;
 let totalPlaytime;
 let week;
-let playerTimeframes = {};
+let playerTimeframes;
 
 async function initialize() {
 	const response = await fetch("https://name2.party/api/joindb/filelist.json", { cache: "no-cache" });
@@ -28,15 +28,14 @@ async function gatherPlaytimeData(week) {
 	playerTimeframes = {};
 	for (const player of entries) {
 		const playtime = player.exitTime - player.joinTime;
-		playerTimes[player.playerName] = (playerTimes[player.playerName] || 0) + playtime;
+		totalPlaytime[player.playerName] = (totalPlaytime[player.playerName] || 0) + playtime;
 
 		if (!playerTimeframes[player.playerName]) {
-			playerTimeframes[player.playerName] = []
+			playerTimeframes[player.playerName] = [];
 		}
 		playerTimeframes[player.playerName].push({
 			joinPercent: player.joinTime / 86400,
 			leavePercent: player.exitTime / 86400
-		})
+		});
 	}
-	return { playerTimes, playerTimeframes };
 }
