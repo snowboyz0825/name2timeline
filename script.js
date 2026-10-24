@@ -31,7 +31,8 @@ async function gatherPlaytimeData(week) {
 
 		const timeframeJoinPercent = player.jointime/86400;
 		const timeframeLeavePercent = player.exitTime/86400;
-		
+		playerTimeframes[player.playerName].joinPercent = timeframeJoinPercent;
+		playerTimeframes[player.playerName].leavePercent = timeframeLeavePercent;		
 	}
 	return playerTimes;
 }
