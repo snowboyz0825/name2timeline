@@ -1,7 +1,7 @@
 let filelist
 let totalPlaytime
 let week
-
+let ready
 
 async function fetchIntialData() {
 	filelist = await fetch("https://name2.party/api/joindb/filelist.json", { cache: "no-cache" });
@@ -13,7 +13,7 @@ initialize();
 async function initialize() {
 	await ready;
 	week = await fetchWeekNumber();
-	totalPlaytime = await gatherPlaytimeData();
+	totalPlaytime = await gatherPlaytimeData(week);
 	const weekPlaytimeDataOrganized = await gatherPlaytimeData(week);
 }
 
