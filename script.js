@@ -42,5 +42,7 @@ async function gatherPlaytimeData(week) {
 
 async function displayShit() {
 	await ready;
-	
+	for (const name in playerTimeframes) {
+		
+	}
 }
