@@ -39,3 +39,8 @@ async function gatherPlaytimeData(week) {
 		});
 	}
 }
+
+async function displayShit() {
+	await ready;
+	
+}
