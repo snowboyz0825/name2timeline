@@ -40,6 +40,8 @@ async function gatherPlaytimeData(week) {
 	}
 }
 
+let grid = document.getElementById("PlaceholderDayTimeline")
+
 async function displayShit() {
 	await ready;
 	for (const name in playerTimeframes) {
@@ -52,5 +54,6 @@ async function displayShit() {
 			div.style.width = `${(leavePercent - joinPercent) * 100}%`;
 			bar.appendChild(div);
 		}
+		grid.appendChild(bar)
 	}
 }
