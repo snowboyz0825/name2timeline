@@ -40,20 +40,23 @@ async function gatherPlaytimeData(week) {
 	}
 }
 
-let grid = document.getElementById("PlaceholderDayTimeline")
+let grid = document.getElementById("timeline-grid");
 
 async function displayShit() {
 	await ready;
 	for (const name in playerTimeframes) {
 		const bar = document.createElement("div");
+		bar.className = "day-timeline";
 		bar.title = name;
 		for (const time of playerTimeframes[name]) {
 			const div = document.createElement("div");
 			div.className = "session";
-			div.style.left = `${joinPercent * 100}%`;
-			div.style.width = `${(leavePercent - joinPercent) * 100}%`;
+			div.style.left = `${time.joinPercent * 100}%`;
+			div.style.width = `${(time.leavePercent - time.joinPercent) * 100}%`;
 			bar.appendChild(div);
 		}
-		grid.appendChild(bar)
+		grid.appendChild(bar);
 	}
 }
+
+displayShit().catch(console.error);
