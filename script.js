@@ -43,6 +43,14 @@ async function gatherPlaytimeData(week) {
 async function displayShit() {
 	await ready;
 	for (const name in playerTimeframes) {
-		
+		const bar = document.createElement("div");
+		bar.title = name;
+		for (const time of playerTimeframes[name]) {
+			const div = document.createElement("div");
+			div.className = "session";
+			div.style.left = `${joinPercent * 100}%`;
+			div.style.width = `${(leavePercent - joinPercent) * 100}%`;
+			bar.appendChild(div);
+		}
 	}
 }
