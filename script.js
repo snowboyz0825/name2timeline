@@ -34,8 +34,8 @@ async function gatherPlaytimeData(week) {
 			playerTimeframes[player.playerName] = [];
 		}
 		playerTimeframes[player.playerName].push({
-			joinPercent: player.joinTime / 86400,
-			leavePercent: player.exitTime / 86400
+			joinPercent: (player.joinTime % 86400) / 86400,
+			leavePercent: (player.exitTime % 86400) / 86400
 		});
 	}
 }
