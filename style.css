@@ -5,6 +5,7 @@
 	background: #444;
 	border-radius: 4px;
 	overflow: hidden;
+    gap: 12px;
 }
 
 .session {
