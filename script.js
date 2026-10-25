@@ -53,6 +53,7 @@ async function displayShit() {
 			div.className = "session";
 			div.style.left = `${time.joinPercent * 100}%`;
 			div.style.width = `${(time.leavePercent - time.joinPercent) * 100}%`;
+			div.title = name;
 			bar.appendChild(div);
 		}
 		grid.appendChild(bar);
